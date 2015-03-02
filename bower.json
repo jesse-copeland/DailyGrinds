@@ -1,0 +1,17 @@
+{
+  "name": "DailyGrinds",
+  "version": "0.0.0",
+  "authors": [
+    "Jesse Copeland <jesse.copeland@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ]
+}
