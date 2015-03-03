@@ -10,4 +10,35 @@ html {
 
 .container {
   margin: 0 auto;
+  max-width: 500px;
 }
+
+ul.todo {
+  padding-left: 10px;
+  list-style: none;
+
+  li {
+    clear: both;
+  }
+
+  .todo-check {
+    float: left;
+    width: 7%;
+    margin: 0;
+  }
+
+  .todo-title {
+    margin: 0 8%;
+  }
+
+  .todo-buttons {
+    float: right;
+    width: 7%;
+    margin: 0;
+  }
+}
+
+#footer {
+  text-align: center;
+}
+

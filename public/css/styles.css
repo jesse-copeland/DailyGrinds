@@ -6,4 +6,24 @@ html {
   font: normal 16px/1.2 'Hind', Arial, Helvetica, sans-serif; }
 
 .container {
-  margin: 0 auto; }
+  margin: 0 auto;
+  max-width: 500px; }
+
+ul.todo {
+  padding-left: 10px;
+  list-style: none; }
+  ul.todo li {
+    clear: both; }
+  ul.todo .todo-check {
+    float: left;
+    width: 7%;
+    margin: 0; }
+  ul.todo .todo-title {
+    margin: 0 8%; }
+  ul.todo .todo-buttons {
+    float: right;
+    width: 7%;
+    margin: 0; }
+
+#footer {
+  text-align: center; }

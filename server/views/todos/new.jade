@@ -2,4 +2,14 @@ extends ../layouts/layout.jade
 
 block content
   .container
-    p showing new form
+    form(action="/todo", method="post")
+      fieldset
+        legend New Grind
+        div
+          label(for="title") Grind
+          input#title(type="text", name="title")
+        div
+          label(for="description") Description
+          textarea#description(name="description", cols="30", rows="10")
+        .button
+          button(type="submit") Add Grind
