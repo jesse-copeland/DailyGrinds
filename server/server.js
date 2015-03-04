@@ -64,14 +64,18 @@ app.delete('/todo/:id', function (req, res) {
   });
 });
 
-app.put('/todo/:id/completed', function (req, res) {
+app.put('/todo/:id/:completed', function (req, res) {
   var id = req.params.id;
-  var completed = req.body.completed;
+  var completed = req.params.completed;
   Todo.update({ _id: id }, {$set: { completed: completed }}, function (err, todo) {
     if (err) {
+      console.log('Error: setting completed on todo: ' + id);
       res.json({"error": err});
     } else if (!todo) {
-      res.json({"message": 'todo ' + id + ' not found.'});
+      console.log('todo ' + id + ' not found.');
+    } else {
+      console.log('Server: ' + id + ' set to ' + completed);
+      res.json(todo);
     }
   });
 });

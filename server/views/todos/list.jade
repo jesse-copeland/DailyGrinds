@@ -2,17 +2,39 @@ extends ../layouts/layout.jade
 
 block content
   .container
+    .heading
+      h1 Daily Grinds
+      h2 grind through your tasks
+    form.add-todo-form(action="/new")
+      .top-row
+        .desc-drop
+          i.fa.fa-caret-down
+        input.add-todo-title(type="text", placeholder="New grind")
+        button.button.add-todo-button
+          i.fa.fa-plus
+      textarea#add-todo-desc(name="", cols="30", rows="5", placeholder="add grind description...")
+
     ul.todo
       each todo in todos
-        li
-          if todo.completed
-            input(class="todo-check", type="checkbox", data-id="#{todo._id}", checked)
-          else
-            input(class="todo-check", type="checkbox", data-id="#{todo._id}")
-          .todo-buttons
-            form(action="/todo/#{todo._id}?_method=DELETE", method='POST', enctype="application/x-www-form-urlencoded")
-              .button
-                button X
-          .todo-title= todo.title
+        if todo.completed
+          li(data-completed="#{todo.completed}", data-id="#{todo._id}", class="completed")
+            label(for="todo-cb-#{todo._id}") 
+              i.fa.fa-check
+            input(id="todo-cb-#{todo._id}", type="checkbox", checked)
+            span.todo-title= todo.title
+            .todo-buttons
+              form(action="/todo/#{todo._id}?_method=DELETE", method='POST', enctype="application/x-www-form-urlencoded")
+                button.button.todo-button
+                  i.fa.fa-trash-o
+        else
+          li(data-completed="#{todo.completed}", data-id="#{todo._id}", class="")
+            label(for="todo-cb-#{todo._id}") 
+              i.fa.fa-check          
+            input(id="todo-cb-#{todo._id}", type="checkbox")
+            span.todo-title= todo.title
+            .todo-buttons
+              form(action="/todo/#{todo._id}?_method=DELETE", method='POST', enctype="application/x-www-form-urlencoded")
+                button.button.todo-button
+                  i.fa.fa-trash-o
 
     a(href="/new") New Grind

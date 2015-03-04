@@ -1,28 +1,194 @@
 @import url(http://fonts.googleapis.com/css?family=Hind:600,300,400);
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.clearfix:after {
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both; }
+
 *, *:before, *:after {
   box-sizing: border-box; }
 
 html {
-  font: normal 16px/1.2 'Hind', Arial, Helvetica, sans-serif; }
+  height: 100%;
+  font: normal 16px/1.2 'Hind', Arial, Helvetica, sans-serif;
+  background: url(../images/vintage_speckles.png) repeat; }
+
+body {
+  height: 100%;
+  background: linear-gradient(rgba(115, 77, 42, 0.5), rgba(115, 77, 42, 0)); }
 
 .container {
   margin: 0 auto;
   max-width: 500px; }
 
+.heading {
+  margin: 0 auto 15px;
+  padding: 15px 0;
+  min-width: 320px;
+  background: linear-gradient(#322112, #734d2b);
+  color: #e4ddd6;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 0 3px 3px rgba(115, 77, 42, 0.4); }
+  .heading h1 {
+    font-size: 3.4rem;
+    text-align: center; }
+  .heading h2 {
+    font-size: 1.6rem;
+    text-align: center; }
+
+.button {
+  display: inline-block;
+  line-height: normal;
+  zoom: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
+
+.add-todo-form {
+  position: relative;
+  margin-bottom: 12px; }
+  .add-todo-form .top-row {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 -1px 2px 2px rgba(115, 77, 42, 0.2);
+    border-radius: 4px; }
+    .add-todo-form .top-row .desc-drop {
+      display: inline-block;
+      height: 2.75rem;
+      width: 2.75rem;
+      vertical-align: top;
+      border: 2px solid #734d2b;
+      padding: 0.25rem 0.5rem;
+      text-align: center;
+      font-size: 1.6rem;
+      background-color: #734d2b;
+      color: #e2dad3;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      transition: background-color 0.5s; }
+    .add-todo-form .top-row .add-todo-title {
+      line-height: 2.5rem;
+      width: 70%;
+      font-size: 1.6rem;
+      padding-left: 15px;
+      background-color: transparent;
+      border: 0px solid; }
+    .add-todo-form .top-row .add-todo-button {
+      float: right;
+      padding: 0.5rem 1rem;
+      border: 0;
+      background-color: #734d2b;
+      text-decoration: none;
+      font-size: 1.5rem;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      color: #e2dad3; }
+      .add-todo-form .top-row .add-todo-button:active {
+        background-color: #e2dad3;
+        color: #734d2b; }
+  .add-todo-form #add-todo-desc {
+    display: none;
+    position: relative;
+    width: 75%;
+    margin-left: 2.75rem;
+    top: 5px;
+    font-size: 1.6rem; }
+
 ul.todo {
-  padding-left: 10px;
   list-style: none; }
+  ul.todo i {
+    font-size: 1.5rem; }
   ul.todo li {
-    clear: both; }
-  ul.todo .todo-check {
-    float: left;
-    width: 7%;
-    margin: 0; }
-  ul.todo .todo-title {
-    margin: 0 8%; }
+    clear: both;
+    background: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+    box-shadow: 0 -1px 2px 2px rgba(115, 77, 42, 0.2);
+    border-radius: 4px; }
+    ul.todo li input[type="checkbox"] {
+      display: none; }
+    ul.todo li label {
+      display: inline-block;
+      height: 2.5rem;
+      border: 2px solid #734d2b;
+      padding: 0.25rem 0.5rem;
+      text-align: center;
+      background-color: #e2dad3;
+      color: #e2dad3;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      transition: background-color 0.5s; }
+    ul.todo li span {
+      position: relative;
+      margin: 0 15px;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      padding: 0 0.625rem;
+      color: #322110;
+      transition: color .5s; }
+      ul.todo li span:before {
+        content: " ";
+        position: absolute;
+        width: 0%;
+        border-top: 2px solid #734d2b;
+        top: 1.1rem;
+        left: 0;
+        transition: width 0.5s; }
+    ul.todo li.completed label {
+      background-color: #734d2b; }
+    ul.todo li.completed span {
+      color: #d7cdc3; }
+      ul.todo li.completed span:before {
+        width: 100%; }
+  ul.todo .todo-button {
+    padding: 0.5rem 1rem;
+    border: 0;
+    background-color: #734d2b;
+    text-decoration: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    color: #e2dad3; }
+    ul.todo .todo-button:active {
+      background-color: #e2dad3;
+      color: #734d2b; }
   ul.todo .todo-buttons {
     float: right;
-    width: 7%;
     margin: 0; }
 
 #footer {
