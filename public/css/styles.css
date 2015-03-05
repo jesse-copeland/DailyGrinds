@@ -51,12 +51,15 @@ body {
   margin: 0 auto;
   max-width: 500px; }
 
+i.fa {
+  display: block; }
+
 .heading {
   margin: 0 auto 15px;
   padding: 15px 0;
   min-width: 320px;
   background: linear-gradient(#322112, #734d2b);
-  color: #e4ddd6;
+  color: #d7cdc3;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   box-shadow: 0 0 3px 3px rgba(115, 77, 42, 0.4); }
@@ -89,84 +92,88 @@ body {
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 -1px 2px 2px rgba(115, 77, 42, 0.2);
     border-radius: 4px; }
-    .add-todo-form .top-row .desc-drop {
-      display: inline-block;
-      height: 2.75rem;
-      width: 2.75rem;
-      vertical-align: top;
-      border: 2px solid #734d2b;
-      padding: 0.25rem 0.5rem;
-      text-align: center;
-      font-size: 1.6rem;
-      background-color: #734d2b;
-      color: #e2dad3;
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-      transition: background-color 0.5s; }
     .add-todo-form .top-row .add-todo-title {
-      line-height: 2.5rem;
-      width: 70%;
-      font-size: 1.6rem;
-      padding-left: 15px;
+      font-size: 1.5rem;
+      padding: 0.625rem;
+      width: calc(100% - 3.2rem);
+      padding-left: 1rem;
       background-color: transparent;
       border: 0px solid; }
     .add-todo-form .top-row .add-todo-button {
+      font-size: 1.5rem;
+      padding: 0.5rem;
       float: right;
-      padding: 0.5rem 1rem;
-      border: 0;
+      border: 2px solid #734d2b;
       background-color: #734d2b;
       text-decoration: none;
-      font-size: 1.5rem;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
-      color: #e2dad3; }
+      color: #d7cdc3; }
       .add-todo-form .top-row .add-todo-button:active {
-        background-color: #e2dad3;
+        background-color: #d7cdc3;
         color: #734d2b; }
   .add-todo-form #add-todo-desc {
     display: none;
     position: relative;
-    width: 75%;
+    width: calc(100% - 5.1875rem);
     margin-left: 2.75rem;
     top: 5px;
-    font-size: 1.6rem; }
+    padding: 10px;
+    font-size: 1.2rem; }
 
 ul.todo {
   list-style: none; }
   ul.todo i {
-    font-size: 1.5rem; }
+    font-size: inherit; }
   ul.todo li {
-    clear: both;
-    background: rgba(255, 255, 255, 0.8);
-    margin-bottom: 8px;
-    box-shadow: 0 -1px 2px 2px rgba(115, 77, 42, 0.2);
-    border-radius: 4px; }
+    clear: both; }
+    ul.todo li .todo-details-wrapper {
+      display: inline-block;
+      width: calc(100% - 5.1875rem);
+      background: rgba(255, 255, 255, 0.8);
+      margin-bottom: 8px;
+      min-height: 2.75rem; }
     ul.todo li input[type="checkbox"] {
       display: none; }
     ul.todo li label {
+      font-size: 1.5rem;
+      padding: 0.5rem;
       display: inline-block;
-      height: 2.5rem;
       border: 2px solid #734d2b;
-      padding: 0.25rem 0.5rem;
       text-align: center;
-      background-color: #e2dad3;
-      color: #e2dad3;
+      background-color: #d7cdc3;
+      color: #d7cdc3;
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
+      vertical-align: top;
       transition: background-color 0.5s; }
+    ul.todo li .todo-title-wrap {
+      width: calc(100% - 110px);
+      display: inline-block;
+      overflow: hidden;
+      height: 2.5rem; }
+    ul.todo li .todo-desc-wrap p {
+      color: #322110;
+      margin: 0 .9375rem;
+      padding: 0.5rem 0;
+      border-top: 1px solid #d7cdc3;
+      transition: color .5s; }
+      ul.todo li .todo-desc-wrap p.hide {
+        display: none; }
     ul.todo li span {
-      position: relative;
-      margin: 0 15px;
       font-size: 1.5rem;
-      line-height: 2rem;
+      padding: 0.625rem;
+      position: relative;
+      margin: 0 5px;
       padding: 0 0.625rem;
       color: #322110;
+      line-height: 2.5rem;
       transition: color .5s; }
       ul.todo li span:before {
         content: " ";
         position: absolute;
         width: 0%;
-        border-top: 2px solid #734d2b;
+        border-top: 2px solid #322110;
         top: 1.1rem;
         left: 0;
         transition: width 0.5s; }
@@ -176,16 +183,19 @@ ul.todo {
       color: #d7cdc3; }
       ul.todo li.completed span:before {
         width: 100%; }
+    ul.todo li.completed .todo-desc-wrap p {
+      color: #d7cdc3; }
   ul.todo .todo-button {
-    padding: 0.5rem 1rem;
-    border: 0;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 2px solid #734d2b;
     background-color: #734d2b;
     text-decoration: none;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    color: #e2dad3; }
+    color: #d7cdc3; }
     ul.todo .todo-button:active {
-      background-color: #e2dad3;
+      background-color: #d7cdc3;
       color: #734d2b; }
   ul.todo .todo-buttons {
     float: right;

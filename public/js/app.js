@@ -1,11 +1,16 @@
 $(function () {
-  //Chage todo styles when checked or unchecked
-  $('li [type="checkbox"]').change(function () {
+  var $todoList = $('ul.todo');
+  
+  // Chage todo styles when checked or unchecked
+
+  $todoList.on('change', 'li [type="checkbox"]', function () {
     var $parentEl = $(this).parent();
+    console.log($parentEl);
     var id = $parentEl.data('id');
+    console.log(id);
     var checked = $(this).is(':checked');
     $.ajax({
-      type: "PUT",
+      type: 'PUT',
       url: '/todo/' + id + '/' + checked,
       data: { completed: checked },
       success: function (data) {
@@ -15,12 +20,40 @@ $(function () {
       }
     });
   });
-
-  //Show Add Grind description
-  var $todoDescButton = $('.desc-drop');
+  
+  var $todoForm = $('form.add-todo-form');
+  
+  // Show Add Grind description
+  var $addTodoInput = $('.add-todo-title');
   var $todoDesc = $('#add-todo-desc');
-  $todoDescButton.click(function () {
-    $todoDesc.slideToggle('fast');
-  });
+  
+  $todoForm.focusin($todoDesc.slideToggle('fast'));
 
-}); //end on document load
+
+    
+  // Submit new Grind
+  $todoForm.submit(function (event) {
+    event.preventDefault();
+    console.log('add todo submit');
+    var newTodoTitle = $addTodoInput.val();
+    var newTodoDescription = $todoDesc.val();
+
+    $.ajax({
+      type: 'POST',
+      url: '/todo',
+      data: {
+        title: newTodoTitle,
+        description: newTodoDescription
+      },
+      success: function (data) {
+        $todoList.prepend(data);
+        $addTodoInput.val('');
+        $todoDesc.val('');
+
+      },
+      fail: function () {
+        
+      }
+    });
+  });
+}); // end on document load

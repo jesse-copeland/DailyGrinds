@@ -30,7 +30,7 @@ var Todo = mongoose.model('Todo', todoSchema);
 
 // Routes
 app.get('/', function (req, res) {
-  Todo.find(function (err, todos) {
+  Todo.find({}).sort({'created_at': -1}).exec(function (err, todos) {
     if (err) throw err;
     res.render('todos/list', {todos: todos});
   });
@@ -51,7 +51,7 @@ app.post('/todo', function (req, res) {
 
   todo.save(function (err) {
     if (err) throw err;
-    res.redirect('/');
+    res.render('todos/new_todo', {todo: todo});
   });
 });
 
