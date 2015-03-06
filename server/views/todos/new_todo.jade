@@ -10,6 +10,5 @@ li(data-completed="#{todo.completed}", data-id="#{todo._id}", class="")
     .todo-desc-wrap
       p.todo-desc(class=descClass)= todo.description
   .todo-buttons
-    form(action="/todo/#{todo._id}?_method=DELETE", method='POST', enctype="application/x-www-form-urlencoded")
-      button.button.todo-button
-        i.fa.fa-trash-o
+    a.button.delete-todo-button(href="/todo/#{todo._id}")
+      i.fa.fa-trash-o

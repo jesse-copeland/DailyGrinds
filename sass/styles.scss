@@ -127,6 +127,7 @@ i.fa {
     top: 5px;
     padding: 10px;
     font-size: 1.2rem;
+    background: rgba(255,255,255,0.8);
   }
 }
 
@@ -169,6 +170,14 @@ ul.todo {
     }
 
     .todo-title-wrap {
+      width: 100%;
+      display: inline-block;
+      overflow: hidden;
+      height: 2.5rem;
+    }
+
+    .todo-update-input {
+      @include input-size(false);
       width: calc(100% - 110px);
       display: inline-block;
       overflow: hidden;
@@ -235,7 +244,7 @@ ul.todo {
     }
   }
 
-  .todo-button {
+  .delete-todo-button {
     @include input-size(true);
     border: 2px solid $theme-base;
     background-color: $theme-base;

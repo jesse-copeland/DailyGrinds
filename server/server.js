@@ -3,6 +3,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var favicon = require('serve-favicon');
 
 // Instantiate Express
 var app = express();
@@ -13,6 +14,7 @@ app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/../public'));
+app.use(favicon(__dirname + '/../public/favicon.ico'));
 
 mongoose.connect('mongodb://localhost/daily_grinds');
 
@@ -36,10 +38,12 @@ app.get('/', function (req, res) {
   });
 });
 
-app.get('/new', function (req, res) {
-  res.render('todos/new');
-});
 
+// app.get('/new', function (req, res) {
+//   res.render('todos/new');
+// });
+
+// Add new Todo
 app.post('/todo', function (req, res) {
   var title = req.body.title;
   var description = req.body.description;
@@ -55,15 +59,36 @@ app.post('/todo', function (req, res) {
   });
 });
 
+
+// Delete Todo
 app.delete('/todo/:id', function (req, res) {
   var id = req.params.id;
   Todo.find({ _id: id }).remove().exec(function (err) {
     if (err) throw err;
     console.log('Record: ' + id + ' has been deleted.');
-    res.redirect('/');
+    res.json({ _id: id });
   });
 });
 
+// Update Todo
+app.put('/todo/:id', function (req, res) {
+  var id = req.params.id;
+  var title = req.body.title;
+  console.log('Server: updating record: ' + id);
+  Todo.update({ _id: id }, {$set: { title: title }}, function (err, todo) {
+    if (err) {
+      console.log('Error: updating todo: ' + id);
+      res.json({"error": err});
+    } else if (!todo) {
+      console.log('todo ' + id + ' not found.');
+    } else {
+      console.log('Server: ' + id + ' title updated');
+      res.json(todo);
+    }
+  });
+});
+
+// Check or uncheck Todo as completed
 app.put('/todo/:id/:completed', function (req, res) {
   var id = req.params.id;
   var completed = req.params.completed;
